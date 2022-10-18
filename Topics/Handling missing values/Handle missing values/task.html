@@ -1,0 +1,10 @@
+<html><body><p>Load the given dataset into your IDE using <code class="java">pandas</code> and get rid of missing values according to the following rules:</p>
+<ul>
+<li>if a column has more than 7 <code class="java">NaN</code>s, drop it;</li>
+<li>if a column wasn't deleted at the previous step, fill <code class="java">NaN</code>s with a median value.</li>
+</ul>
+<p>Print <strong>the first 5 rows</strong><em> </em>of the <code class="java">DataFrame</code> and copy the result to the answer section.</p>
+<p><button class="btn-sm btn-outline-secondary" onclick="getElementById('hint-508').style.display='inline'">
+        Hint
+      </button>
+</p><div id="hint-508" style="display:none;"><code class="java">thresh=N</code> from <code class="java">dropna()</code> requires that a column had at least <code class="java">N</code> non-<code class="java">NaN</code>s to survive </div></body></html><br><b>Sample Input:</b><br><pre><code class="language-no-highlight">brick,floor,totsp,price<br>NaN,11.0,199.0,8.5<br>0.0,8.0,102.0,7<br>1.0,17.0,51.0,NaN<br>NaN,19.0,137.0,6.7<br>0.0,15.0,207.0,NaN<br>NaN,12.0,87.0,7.1<br>1,17.0,179.0,NaN<br>0.0,9.0,241.0,84.0<br>1.0,11.0,237.0,NaN<br>NaN,14.0,70.0,8.7<br>0.0,7.0,210.0,NaN<br>NaN,1.0,107.0,9.9<br>NaN,15.0,71.0,5.4<br>0.0,15.0,138.0,8.3<br>0.0,12.0,98.0,NaN<br>0.0,9.0,108.0,5.3<br>NaN,8.0,219.0,81.7<br>0.0,12.0,237.0,79.6<br>1.0,12.0,64.0,NaN<br>NaN,7.0,239.0,73.5<br></code></pre><br><b>Sample Output:</b><br><pre><code class="language-no-highlight">   floor  totsp  price<br>0   11.0  199.0    8.5<br>1    8.0  102.0    7.0<br>2   17.0   51.0    8.5<br>3   19.0  137.0    6.7<br>4   15.0  207.0    8.5</code></pre><br><br>

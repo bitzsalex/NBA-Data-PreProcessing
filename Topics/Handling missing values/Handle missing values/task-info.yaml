@@ -1,0 +1,40 @@
+type: dataset
+files:
+- name: main.py
+  visible: true
+  text: "#  write your code here \n\n"
+  learner_created: false
+- name: data/sample/input.txt
+  visible: true
+  text: |
+    brick,floor,totsp,price
+    NaN,11.0,199.0,8.5
+    0.0,8.0,102.0,7
+    1.0,17.0,51.0,NaN
+    NaN,19.0,137.0,6.7
+    0.0,15.0,207.0,NaN
+    NaN,12.0,87.0,7.1
+    1,17.0,179.0,NaN
+    0.0,9.0,241.0,84.0
+    1.0,11.0,237.0,NaN
+    NaN,14.0,70.0,8.7
+    0.0,7.0,210.0,NaN
+    NaN,1.0,107.0,9.9
+    NaN,15.0,71.0,5.4
+    0.0,15.0,138.0,8.3
+    0.0,12.0,98.0,NaN
+    0.0,9.0,108.0,5.3
+    NaN,8.0,219.0,81.7
+    0.0,12.0,237.0,79.6
+    1.0,12.0,64.0,NaN
+    NaN,7.0,239.0,73.5
+  learner_created: false
+- name: data/dataset/input.txt
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/learn/step/17160#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 17 Oct 2022 02:37:50 UTC
+record: -1

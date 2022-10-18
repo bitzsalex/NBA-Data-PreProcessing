@@ -1,0 +1,19 @@
+type: choice
+is_multiple_choice: false
+files:
+- name: main.py
+  visible: true
+  text: |+
+    #  You can experiment here, it won’t be checked
+
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/17158#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 17 Oct 2022 03:08:09 UTC
+record: -1
+selected_options:
+- 0
+- 3
+local_check: false

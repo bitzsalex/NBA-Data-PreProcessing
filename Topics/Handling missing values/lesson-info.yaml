@@ -1,0 +1,7 @@
+content:
+- Theory
+- Recall the methods
+- Handle missing values
+- Guess the meaningful replacement
+- Fill with a group average
+- NaN in a categorical feature
