@@ -1,5 +1,10 @@
 type: choice
-is_multiple_choice: false
+is_multiple_choice: true
+options:
+- text: Median
+- text: '"-1"'
+- text: The most frequent value
+- text: Average value within some group
 files:
 - name: main.py
   visible: true

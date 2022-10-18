@@ -103,5 +103,13 @@ files:
         Tests().run_tests()
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/22669#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #1
+
+    Either functions `clean_data` or `feature_data` from the previous stages or
+    the function `multicol_data` were not found in your solution.
+    Please include all of them.
+  time: Tue, 18 Oct 2022 06:23:48 UTC
 record: -1

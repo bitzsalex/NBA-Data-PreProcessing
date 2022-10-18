@@ -58,3 +58,40 @@ def clean_data(path: str) -> pd.DataFrame:
     return df
 
 
+def feature_data(df: pd.DataFrame, cardinality=50) -> pd.DataFrame:
+    # Extracting version year
+    df.version = pd.to_datetime(
+        df.version.apply(lambda value: value[-2:]),
+        format="%y"
+    )
+
+    # engineering age column
+    df["age"] = df.version.dt.year - df.b_day.dt.year
+
+    # engineering experience
+    df["experience"] = df.version.dt.year - df.draft_year.dt.year
+
+    # engineering bmi
+    df["bmi"] = df.weight / np.square(df.height)
+
+    # dropping unnecessary columns
+    df.drop(columns=["version", "b_day", "draft_year", "weight", "height"], inplace=True)
+
+    # excluding columns from dropping in cardinality
+    check_cardinal_cols = df.loc[:, ~df.columns.isin(["age", "experience", "bmi"])].columns
+
+    # removing features with high cardinality
+    # getting the features that will be dropped
+    drop_features = [
+        index for index, count in df[check_cardinal_cols].nunique().items() if count >= cardinality
+    ]
+
+    # dropping the features, if the list isn't empty
+    if len(drop_features):
+        df.drop(columns=drop_features, inplace=True)
+
+    return df
+
+
+# df = feature_data(clean_data(data_path))
+# print(df.nunique())

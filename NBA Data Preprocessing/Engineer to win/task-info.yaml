@@ -124,6 +124,9 @@ files:
     if __name__ == '__main__':
         Tests().run_tests()
   learner_created: false
+- name: preprocess-BitzsSpace.py
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/22668#comment
-status: Unchecked
-record: -1
+status: Solved
+record: 2
