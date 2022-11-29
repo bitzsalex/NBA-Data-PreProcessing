@@ -1,31 +1,19 @@
 type: edu
 files:
-- name: preprocess.py
-  visible: true
-  text: |
-    import pandas as pd
-    import os
-    import requests
-
-    # Check for ../Data directory presence
-    if not os.path.exists('../Data'):
-        os.mkdir('../Data')
-
-    # Download data if it is unavailable.
-    if 'nba2k-full.csv' not in os.listdir('../Data'):
-        print('Train dataset loading.')
-        url = "https://www.dropbox.com/s/wmgqf23ugn9sr3b/nba2k-full.csv?dl=1"
-        r = requests.get(url, allow_redirects=True)
-        open('../Data/nba2k-full.csv', 'wb').write(r.content)
-        print('Loaded.')
-
-    data_path = "../Data/nba2k-full.csv"
-
-    # write your code here
-  learner_created: false
 - name: tests.py
   visible: false
   text: |
+    from test.tests import Tests
+
+    if __name__ == '__main__':
+        Tests().run_tests()
+  learner_created: false
+- name: test/__init__.py
+  visible: false
+  learner_created: false
+- name: test/tests.py
+  visible: false
+  text: |-
     from hstest import StageTest, TestCase, CheckResult
     from hstest.stage_test import List
     import pandas as pd
@@ -102,14 +90,32 @@ files:
     if __name__ == '__main__':
         Tests().run_tests()
   learner_created: false
-feedback_link: https://hyperskill.org/learn/step/22669#comment
-status: Failed
-feedback:
-  message: |-
-    Wrong answer in test #1
+- name: preprocess.py
+  visible: true
+  text: |
+    import pandas as pd
+    import os
+    import requests
 
-    Either functions `clean_data` or `feature_data` from the previous stages or
-    the function `multicol_data` were not found in your solution.
-    Please include all of them.
-  time: Tue, 18 Oct 2022 06:23:48 UTC
-record: -1
+    # Check for ../Data directory presence
+    if not os.path.exists('../Data'):
+        os.mkdir('../Data')
+
+    # Download data if it is unavailable.
+    if 'nba2k-full.csv' not in os.listdir('../Data'):
+        print('Train dataset loading.')
+        url = "https://www.dropbox.com/s/wmgqf23ugn9sr3b/nba2k-full.csv?dl=1"
+        r = requests.get(url, allow_redirects=True)
+        open('../Data/nba2k-full.csv', 'wb').write(r.content)
+        print('Loaded.')
+
+    data_path = "../Data/nba2k-full.csv"
+
+    # write your code here
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/22669#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Tue, 29 Nov 2022 05:23:18 UTC
+record: 3

@@ -86,6 +86,10 @@ def feature_data(df: pd.DataFrame, cardinality=50) -> pd.DataFrame:
         index for index, count in df[check_cardinal_cols].nunique().items() if count >= cardinality
     ]
 
+    # remove target variable from the list drop_features df
+    if 'salary' in drop_features:
+        drop_features.remove('salary')
+
     # dropping the features, if the list isn't empty
     if len(drop_features):
         df.drop(columns=drop_features, inplace=True)
@@ -93,5 +97,40 @@ def feature_data(df: pd.DataFrame, cardinality=50) -> pd.DataFrame:
     return df
 
 
+def multicol_data(df: pd.DataFrame, corr_coefficient: float = 0.5) -> pd.DataFrame:
+    """
+    Remove the multicollinearity of features in a data frame
+
+    :param df: data frame to check the collinearity
+    :param corr_coefficient: the minimum coefficient value to filter multicollinearity
+    :return: a data frame that has non-multicollinearity
+    """
+    # filtering the numeric features
+    numeric_features = list(df.select_dtypes('number').drop(columns='salary'))
+
+    # calculating the correlation among each other
+    corr = df[numeric_features].corr().abs().unstack().sort_values()
+
+    # filter the correlation values
+    corr = corr.where(corr > corr_coefficient).dropna()
+    corr = corr.drop_duplicates()
+
+    # get the name of features with high correlation value
+    highest_features = list(set([
+        feature
+        for features in corr.index
+        for feature in features
+    ]))
+
+    # calculate higher correlation features with target variable
+    corr = df[[*highest_features, 'salary']].corr()
+
+    # dropping the feature that has a minimum correlation with the target variable
+    df.drop(columns=corr.loc[highest_features, 'salary'].idxmin(), inplace=True)
+
+    return df
+
+
 # df = feature_data(clean_data(data_path))
-# print(df.nunique())
+# df = multicol_data(df)
+# print(list(df.select_dtypes('number').drop(columns='salary')))

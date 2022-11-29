@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/789128/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Tue, 18 Oct 2022 06:14:27 UTC
+update_date: Tue, 29 Nov 2022 03:47:35 UTC
 stages:
 - id: 1485
   step: 22667
@@ -13,12 +13,26 @@ stages:
   is_completed: true
 - id: 1487
   step: 22669
-  is_completed: false
+  is_completed: true
 - id: 1488
   step: 22670
   is_completed: false
 topics:
   0:
+  - title: Basics of sets
+    theory_id: 8220
+  - title: Basics of functions
+    theory_id: 8857
+  - title: Sample space
+    theory_id: 7309
+  - title: Events
+    theory_id: 7892
+  - title: The concept of probability
+    theory_id: 10538
+  - title: Probability and Statistics
+    theory_id: 11637
+  - title: Population and sample
+    theory_id: 11274
   - title: Mean, median, and mode
     theory_id: 11282
   - title: IDE
@@ -99,12 +113,12 @@ topics:
     theory_id: 12998
   - title: .loc & .iloc
     theory_id: 13343
-  - title: Working with missing values
-    theory_id: 14686
   - title: Summarizing numeric columns
     theory_id: 13359
   - title: Grouping and aggregating data in pandas
     theory_id: 12585
+  - title: Working with missing values
+    theory_id: 14686
   - title: Handling missing values
     theory_id: 17154
   - title: Basic data types
@@ -158,19 +172,15 @@ topics:
     theory_id: 16796
   - title: Summarizing categorical columns
     theory_id: 13351
-  - title: Modifying a DataFrame
-    theory_id: 13007
   - title: Visualization in pandas
     theory_id: 13139
+  - title: Modifying a DataFrame
+    theory_id: 13007
   - title: Indexes
     theory_id: 6189
   - title: Slicing
     theory_id: 6177
   2:
-  - title: Basics of sets
-    theory_id: 8220
-  - title: Basics of functions
-    theory_id: 8857
   - title: Vector operations
     theory_id: 16763
   - title: Vector space

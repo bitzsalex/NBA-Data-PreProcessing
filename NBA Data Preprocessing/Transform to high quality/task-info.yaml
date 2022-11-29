@@ -26,6 +26,17 @@ files:
 - name: tests.py
   visible: false
   text: |
+    from test.tests import Tests
+
+    if __name__ == '__main__':
+        Tests().run_tests()
+  learner_created: false
+- name: test/__init__.py
+  visible: false
+  learner_created: false
+- name: test/tests.py
+  visible: false
+  text: |-
     from hstest import StageTest, TestCase, CheckResult
     from hstest.stage_test import List
     import pandas as pd
@@ -96,6 +107,13 @@ files:
 
             if y.shape != (439,):
                 return CheckResult.wrong('y series has wrong shape')
+
+            try:
+                sorted(list(X.columns.str.lower()[:3]))
+            except AttributeError:
+                return CheckResult.wrong("The first three column names in the X DataFrame should be of type 'string'")
+            except Exception:
+                return CheckResult.wrong("Error while parsing X DataFrame column names")
 
             if sorted(list(X.columns.str.lower()[:3])) != sorted(['rating', 'experience', 'bmi']):
                 return CheckResult.wrong(
