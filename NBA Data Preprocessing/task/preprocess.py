@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 import requests
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
 # Check for ../Data directory presence
 if not os.path.exists('../Data'):
@@ -131,6 +132,42 @@ def multicol_data(df: pd.DataFrame, corr_coefficient: float = 0.5) -> pd.DataFra
     return df
 
 
-# df = feature_data(clean_data(data_path))
-# df = multicol_data(df)
-# print(list(df.select_dtypes('number').drop(columns='salary')))
+def transform_data(df: pd.DataFrame) -> tuple:
+    """
+    Transforming the numerical and categorical features using StandardScaler and OneHotEncoder respectively.
+
+    :param df: a data frame to transform its values
+    :return: a tuple of features and target variable
+    """
+
+    # getting the numerical and categorical variables
+    numerical_features = df.select_dtypes("number").drop(columns="salary")
+    ordinal_features = df.select_dtypes("object")
+
+    # performing the StandardScaler for numerical features
+    std_scaler = StandardScaler()
+    std_scaler.fit(numerical_features)
+    numerical_features[numerical_features.columns] = std_scaler.transform(numerical_features)
+
+    # performing the OneHotEncoding for categorical features
+    oh_encoder = OneHotEncoder(sparse=False)
+    features = ordinal_features.columns.copy()
+
+    # looping the features
+    for feature in features:
+        # reshape the features
+        trf_feature = ordinal_features[feature].values.reshape(-1, 1)
+
+        # fit the feature and transform it
+        oh_encoder.fit(trf_feature)
+        transformed = oh_encoder.transform(trf_feature)
+
+        # drop the feature from the previous data frame
+        ordinal_features.drop(columns=feature, inplace=True)
+
+        # create new data frame and concatenate with the previous one
+        ordinal_features = pd.concat(
+            [ordinal_features, pd.DataFrame(transformed, columns=oh_encoder.categories_[0])], axis=1)
+
+    # return the features and target variables
+    return pd.concat([numerical_features, ordinal_features], axis=1), df.salary

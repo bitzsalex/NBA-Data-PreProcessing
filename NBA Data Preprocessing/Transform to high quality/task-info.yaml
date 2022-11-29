@@ -145,5 +145,9 @@ files:
         Tests().run_tests()
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/22670#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: Tue, 29 Nov 2022 06:47:48 UTC
 record: -1
